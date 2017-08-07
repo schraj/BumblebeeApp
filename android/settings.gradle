@@ -1,0 +1,3 @@
+rootProject.name = 'BumblebeeApp'
+
+include ':app'
