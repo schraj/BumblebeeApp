@@ -1,18 +1,27 @@
-import { StackNavigator } from 'react-navigation'
-import FilterScreen from '../Containers/FilterScreen'
+import { StackNavigator } from "react-navigation";
+import FilterScreen from "../Containers/FilterScreen";
+import SplashScreen from "../Containers/SplashScreen";
 
-import styles from './Styles/NavigationStyles'
+import styles from "./Styles/NavigationStyles";
 
 // Manifest of possible screens
-const PrimaryNav = StackNavigator({
-  FilterScreen: { screen: FilterScreen }
-}, {
-  // Default config for all screens
-  headerMode: 'none',
-  initialRouteName: 'FilterScreen',
-  navigationOptions: {
-    headerStyle: styles.header
+const PrimaryNav = StackNavigator(
+  {
+    FilterScreen: {
+      screen: FilterScreen
+    },
+    SplashScreen: {
+      screen: SplashScreen
+    }
+  },
+  {
+    // Default config for all screens
+    headerMode: "none",
+    initialRouteName: "SplashScreen",
+    navigationOptions: {
+      headerStyle: styles.header
+    }
   }
-})
+);
 
-export default PrimaryNav
+export default PrimaryNav;
