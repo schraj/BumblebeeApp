@@ -24,6 +24,10 @@ export default StyleSheet.create({
     color: Colors.silver,
     marginTop: Metrics.baseMargin
   },
+  disableSplashCheckbox: {
+    marginBottom: 30,
+    backgroundColor: Colors.snow
+  },
   splashDescription: {
     ...Fonts.style.h5,
     color: Colors.silver,

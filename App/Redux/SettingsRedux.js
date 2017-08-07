@@ -4,7 +4,7 @@ import Immutable from "seamless-immutable";
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  setSettings: ["showSplashScreen"]
+  saveSettings: ["showSplashScreen"]
 });
 
 export const SettingsTypes = Types;
@@ -17,12 +17,12 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Reducers ------------- */
 
-export const setSettings = (state, { showSplashScreen }) => {
+export const saveSettings = (state, { showSplashScreen }) => {
   return state.merge({ showSplashScreen });
 };
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_SETTINGS]: setSettings
+  [Types.SAVE_SETTINGS]: saveSettings
 });

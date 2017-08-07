@@ -7,14 +7,13 @@ export function* startup(action) {
   if (__DEV__ && console.tron) {
   }
 
+  // yield call(setSettings, { showSplashScreen: true });
+
   // deal with splash screen setting
   const response = yield call(getSettings);
-  let showSplashScreen = false;
-  let settingsNeedInitialized = false;
+  let showSplashScreen = true;
   if (response && typeof response.showSplashScreen !== "undefined") {
     showSplashScreen = response.showSplashScreen;
-  } else {
-    yield call(setSettings, { showSplashScreen });
   }
   yield put(SettingsActions.setSettings(showSplashScreen));
 }

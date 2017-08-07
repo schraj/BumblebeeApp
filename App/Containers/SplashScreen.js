@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { ScrollView, Text, Image, View, Button } from "react-native";
 import { connect } from "react-redux";
+import { CheckBox } from "react-native-elements";
 import { Images } from "../Themes";
+import SettingsActions from "../Redux/SettingsRedux";
 
 // Styles
 import styles from "./Styles/SplashScreenStyles";
@@ -9,16 +11,23 @@ import styles from "./Styles/SplashScreenStyles";
 class SplashScreen extends Component {
   constructor(props) {
     super(props);
-    console.tron.log({ message: "in constructor", object: props });
-
-    if (!props.showSplashScreen) {
-      this.props.navigation.navigate("FilterScreen");
-    }
+    this.state = {
+      checked: false
+    };
   }
 
   componentWillMount() {}
 
   componentWillReceiveProps(nextProps) {}
+
+  toggleCheckbox() {
+    this.setState({ checked: !this.state.checked });
+  }
+
+  onButtonClick() {
+    this.props.saveShowSplashScreenSetting(this.state.showSplashScreen);
+    this.props.navigation.navigate("FilterScreen");
+  }
 
   render() {
     return (
@@ -35,8 +44,15 @@ class SplashScreen extends Component {
               Welcome to the field guide. Just choose the body part colors of
               the Bumblebee and we will give you a list of possible species.
             </Text>
+            <CheckBox
+              containerStyle={styles.disableSplashCheckbox}
+              center
+              title="Don't show this page again"
+              checked={this.state.checked}
+              onPress={this.toggleCheckbox.bind(this)}
+            />
             <Button
-              onPress={() => this.props.navigation.navigate("FilterScreen")}
+              onPress={this.onButtonClick.bind(this)}
               title="Go To Identification Page"
             />
           </View>
@@ -46,11 +62,17 @@ class SplashScreen extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    showSplashScreen: state.settings.showSplashScreen
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
   saveShowSplashScreenSetting: show => {
     console.tron.log({ message: "in save setting", show: show });
-    dispatch(Actions.saveShowSplashScreenSetting());
+    dispatch(SettingsActions.saveSettings(show));
   }
 });
 
-export default connect(null, mapDispatchToProps)(SplashScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);
