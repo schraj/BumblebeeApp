@@ -10,7 +10,13 @@ class SplashScreen extends Component {
   constructor(props) {
     super(props);
     console.tron.log({ message: "in constructor", object: props });
+
+    if (!props.showSplashScreen) {
+      this.props.navigation.navigate("FilterScreen");
+    }
   }
+
+  componentWillMount() {}
 
   componentWillReceiveProps(nextProps) {}
 

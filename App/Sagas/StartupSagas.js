@@ -1,5 +1,6 @@
-import { put, select } from "redux-saga/effects";
+import { put, select, call } from "redux-saga/effects";
 import { getSettings, setSettings } from "../Services/storageApi";
+import SettingsActions from "../Redux/SettingsRedux";
 
 // process STARTUP actions
 export function* startup(action) {
@@ -13,6 +14,7 @@ export function* startup(action) {
   if (response && typeof response.showSplashScreen !== "undefined") {
     showSplashScreen = response.showSplashScreen;
   } else {
-    yield call(setSettings, { showSplashScreen: false });
+    yield call(setSettings, { showSplashScreen });
   }
+  yield put(SettingsActions.setSettings(showSplashScreen));
 }
