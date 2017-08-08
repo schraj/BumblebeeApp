@@ -15,5 +15,5 @@ export function* startup(action) {
   if (response && typeof response.showSplashScreen !== "undefined") {
     showSplashScreen = response.showSplashScreen;
   }
-  yield put(SettingsActions.setSettings(showSplashScreen));
+  yield put(SettingsActions.saveSettings(showSplashScreen));
 }

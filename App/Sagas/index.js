@@ -6,10 +6,12 @@ import DebugConfig from "../Config/DebugConfig";
 /* ------------- Types ------------- */
 
 import { StartupTypes } from "../Redux/StartupRedux";
+import { SettingsTypes } from "../Redux/SettingsRedux";
 
 /* ------------- Sagas ------------- */
 
 import { startup } from "./StartupSagas";
+import { saveSettings } from "./SettingsSagas";
 
 /* ------------- API ------------- */
 
@@ -21,7 +23,7 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create();
 
 export default function* root() {
   yield [
-    // some sagas only receive an action
-    takeLatest(StartupTypes.STARTUP, startup)
+    takeLatest(StartupTypes.STARTUP, startup),
+    takeLatest(SettingsTypes.SAVE_SETTINGS, saveSettings)
   ];
 }
