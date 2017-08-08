@@ -20,7 +20,7 @@ class PicturesScreen extends Component {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.centered}>
-          <Text style={[styles.h1, styles.title]}>Species By Category</Text>
+          <Text style={[styles.h1, styles.title]}>List of Species</Text>
         </View>
         <ScrollView
           style={styles.container}

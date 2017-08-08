@@ -54,7 +54,6 @@ const TabNav = TabNavigator(
       showIcon: true,
       style: {
         backgroundColor: Colors.bloodOrange
-        //activeTintColor: Colors.silver
       }
     },
     tabBarPosition: "bottom",

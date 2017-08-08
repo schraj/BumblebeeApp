@@ -53,10 +53,7 @@ export default class FilterScreen extends React.Component {
       <View style={styles.mainContainer}>
         <ScrollView style={styles.container}>
           <View style={styles.centered}>
-            <Text style={[styles.h1, styles.title]}>Bumbles</Text>
-            <Text style={[styles.h5, styles.subTitle]}>
-              Bumblebee Identification Guide
-            </Text>
+            <Text style={[styles.h1, styles.title]}>Identify Your Bee</Text>
           </View>
           <TouchableHighlight>
             <Image source={Images.bumblebeeWhole} style={styles.bumblebeeImage}>

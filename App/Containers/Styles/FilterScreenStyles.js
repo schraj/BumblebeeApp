@@ -38,5 +38,8 @@ export default StyleSheet.create({
   filteredItemText: {
     ...ApplicationStyles.screen.sectionText,
     paddingVertical: Metrics.smallMargin
+  },
+  sectionColorPicker: {
+    display: "none"
   }
 });
