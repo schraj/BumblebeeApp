@@ -1,3 +1,4 @@
+import React from "react";
 import { TabNavigator } from "react-navigation";
 import FilterScreen from "../Containers/FilterScreen";
 import SplashScreen from "../Containers/SplashScreen";
@@ -5,6 +6,8 @@ import PicturesScreen from "../Containers/PicturesScreen";
 import ReportScreen from "../Containers/ReportScreen";
 
 import styles from "./Styles/NavigationStyles";
+import Colors from "../Themes/Colors";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 // Manifest of possible screens
 const TabNav = TabNavigator(
@@ -14,7 +17,7 @@ const TabNav = TabNavigator(
       navigationOptions: {
         tabBarLabel: "Home",
         tabBarIcon: ({ tintColor }) =>
-          <Icon name={"glass"} size={30} color={tintColor} />
+          <FontAwesome name={"home"} size={26} style={{ color: tintColor }} />
       }
     },
     TabItem2: {
@@ -22,15 +25,15 @@ const TabNav = TabNavigator(
       navigationOptions: {
         tabBarLabel: "Identify",
         tabBarIcon: ({ tintColor }) =>
-          <Icon name={"glass"} size={30} color={tintColor} />
+          <FontAwesome name={"search"} size={26} style={{ color: tintColor }} />
       }
     },
     TabItem3: {
       screen: PicturesScreen,
       navigationOptions: {
-        tabBarLabel: "View",
+        tabBarLabel: "List",
         tabBarIcon: ({ tintColor }) =>
-          <Icon name={"glass"} size={30} color={tintColor} />
+          <FontAwesome name={"bars"} size={26} style={{ color: tintColor }} />
       }
     },
     TabItem4: {
@@ -38,14 +41,25 @@ const TabNav = TabNavigator(
       navigationOptions: {
         tabBarLabel: "Report",
         tabBarIcon: ({ tintColor }) =>
-          <Icon name={"glass"} size={30} color={tintColor} />
+          <FontAwesome
+            name={"paper-plane"}
+            size={26}
+            style={{ color: tintColor }}
+          />
       }
     }
   },
   {
     tabBarOptions: {
-      activeTintColor: "#222"
-    }
+      showIcon: true,
+      style: {
+        backgroundColor: Colors.bloodOrange
+        //activeTintColor: Colors.silver
+      }
+    },
+    tabBarPosition: "bottom",
+    animationEnabled: false,
+    swipeEnabled: false
   }
 );
 

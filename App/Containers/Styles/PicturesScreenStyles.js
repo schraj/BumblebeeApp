@@ -17,16 +17,16 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    color: Colors.silver,
+    color: Colors.coal,
     marginTop: 30,
     marginBottom: 30
   },
   subTitle: {
-    color: Colors.silver,
+    color: Colors.coal,
     marginTop: Metrics.baseMargin
   },
   beeImageCaption: {
-    color: Colors.silver,
+    color: Colors.coal,
     marginTop: 30,
     marginBottom: 10
   },

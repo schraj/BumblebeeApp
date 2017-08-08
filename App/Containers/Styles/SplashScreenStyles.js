@@ -17,11 +17,11 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    color: Colors.silver,
+    color: Colors.coal,
     marginTop: 30
   },
   subTitle: {
-    color: Colors.silver,
+    color: Colors.coal,
     marginTop: Metrics.baseMargin
   },
   disableSplashCheckbox: {
@@ -30,7 +30,7 @@ export default StyleSheet.create({
   },
   splashDescription: {
     ...Fonts.style.h5,
-    color: Colors.silver,
+    color: Colors.coal,
     alignItems: "center",
     marginTop: 30,
     marginBottom: 30,

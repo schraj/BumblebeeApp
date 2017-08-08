@@ -15,11 +15,6 @@ class ReportScreen extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Image
-          source={Images.background}
-          style={styles.backgroundImage}
-          resizeMode="stretch"
-        />
         <View style={styles.centered}>
           <Text style={[styles.h1, styles.title]}>Reporting Guidance</Text>
         </View>

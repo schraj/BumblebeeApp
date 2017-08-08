@@ -1,5 +1,11 @@
-import { StyleSheet } from 'react-native'
-import { Metrics, ApplicationStyles, Fonts, Colors, Images } from '../../Themes/'
+import { StyleSheet } from "react-native";
+import {
+  Metrics,
+  ApplicationStyles,
+  Fonts,
+  Colors,
+  Images
+} from "../../Themes/";
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -11,26 +17,26 @@ export default StyleSheet.create({
     marginTop: Metrics.doubleSection,
     height: 400,
     width: 400,
-    resizeMode: 'stretch'
+    resizeMode: "stretch"
   },
   centered: {
-    alignItems: 'center'
+    alignItems: "center"
   },
   title: {
-    color: Colors.silver,
+    color: Colors.coal,
     marginTop: 30
   },
   subTitle: {
-    color: Colors.silver,
+    color: Colors.coal,
     marginTop: Metrics.baseMargin
   },
   bodyPartControlTree: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
+    flexDirection: "column",
+    justifyContent: "flex-start"
   },
   filteredItemText: {
     ...ApplicationStyles.screen.sectionText,
-    paddingVertical: Metrics.smallMargin,
+    paddingVertical: Metrics.smallMargin
   }
-})
+});

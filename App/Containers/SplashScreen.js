@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ScrollView, Text, Image, View, Button } from "react-native";
 import { connect } from "react-redux";
 import { CheckBox } from "react-native-elements";
+
 import { Images } from "../Themes";
 import SettingsActions from "../Redux/SettingsRedux";
 
@@ -16,10 +17,6 @@ class SplashScreen extends Component {
     };
   }
 
-  componentWillMount() {}
-
-  componentWillReceiveProps(nextProps) {}
-
   toggleCheckbox() {
     this.setState({ checked: !this.state.checked });
   }
@@ -32,11 +29,6 @@ class SplashScreen extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Image
-          source={Images.background}
-          style={styles.backgroundImage}
-          resizeMode="stretch"
-        />
         <ScrollView style={styles.container}>
           <View style={styles.centered}>
             <Text style={[styles.h1, styles.title]}>Bumblebee Field Guide</Text>

@@ -19,11 +19,6 @@ class PicturesScreen extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Image
-          source={Images.background}
-          style={styles.backgroundImage}
-          resizeMode="stretch"
-        />
         <View style={styles.centered}>
           <Text style={[styles.h1, styles.title]}>Species By Category</Text>
         </View>
