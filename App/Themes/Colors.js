@@ -22,7 +22,16 @@ const colors = {
   border: "#483F53",
   banner: "#5F3E63",
   text: "#E0D7E5",
-  lightEggplant: "#DE83E2"
+  lightEggplant: "#DE83E2",
+  black: "#808080",
+  golden: "#FFEC8B",
+  red: "#EAC5C5",
+  yellow: "#FFFF00",
+  cloudy: "#CECECE",
+  triangle: "#4E43E8",
+  blackdot: "#6186A8",
+  brown: "#A55E56",
+  white: "#FFFFFF"
 };
 
 export default colors;

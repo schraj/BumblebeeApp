@@ -11,7 +11,7 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   ...Fonts.style,
   container: {
-    paddingBottom: Metrics.baseMargin
+    paddingBottom: 0
   },
   bumblebeeImage: {
     marginTop: Metrics.doubleSection,
@@ -35,11 +35,32 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start"
   },
+  filterResults: {
+    alignItems: "center"
+  },
   filteredItemText: {
-    ...ApplicationStyles.screen.sectionText,
+    color: Colors.coal,
     paddingVertical: Metrics.smallMargin
   },
   sectionColorPicker: {
     display: "none"
+  },
+  filterStatusBar: {
+    flex: 1,
+    flexDirection: "row"
+  },
+  filterStatusBarText: {
+    flex: 2,
+    fontSize: Fonts.size.h4,
+    paddingLeft: 30
+  },
+  resetButton: {
+    paddingTop: 10,
+    width: 100,
+    height: 30
+  },
+  resetButtonContainer: {
+    paddingRight: 10,
+    borderRadius: 3
   }
 });

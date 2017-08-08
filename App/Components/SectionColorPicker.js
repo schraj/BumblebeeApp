@@ -3,34 +3,38 @@ import { View, Text, Picker } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors } from "../Themes";
 
-import { getColorsForBodyPart } from "../Services/FilterService";
 import styles from "./Styles/SectionColorPickerStyles";
 
 export default class SectionColorPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedColor: "NC"
-    };
+    this.state = {};
   }
 
   static propTypes = {
     bodyPart: PropTypes.string.isRequired,
     bodyPartCode: PropTypes.string.isRequired,
+    bodyPartColor: PropTypes.string.isRequired,
     controlHeight: PropTypes.number.isRequired,
-    onColorChange: PropTypes.func.isRequired
+    onBodyPartClick: PropTypes.func.isRequired
   };
 
-  onSelectionChange(itemValue) {
-    this.setState({ selectedColor: itemValue });
-    this.props.onColorChange(itemValue, this.props.bodyPartCode);
-  }
-
-  activatePicker(e) {}
-
   render() {
-    const { bodyPart, bodyPartCode, controlHeight } = this.props;
-    const colorValues = getColorsForBodyPart(bodyPartCode);
+    const {
+      bodyPart,
+      bodyPartCode,
+      bodyPartColor,
+      controlHeight,
+      onBodyPartClick
+    } = this.props;
+
+    let buttonColor = "transparent";
+    if (bodyPartColor !== "NC") {
+      let formattedColorName = bodyPartColor.replace(" ").toLowerCase();
+      if (Colors[formattedColorName]) {
+        buttonColor = formattedColorName;
+      }
+    }
     return (
       <View
         style={[
@@ -39,27 +43,15 @@ export default class SectionColorPicker extends React.Component {
           { height: controlHeight }
         ]}
       >
-        <Text style={[styles.bodyPartLabel, styles.h6]}>
-          {bodyPart}
-        </Text>
         <Button
           title={bodyPart}
           buttonStyle={styles.pickerImage}
-          backgroundColor={Colors.transparent}
+          backgroundColor={Colors[buttonColor]}
           color={Colors.coal}
           borderRadius={5}
           containerViewStyle={[styles.pickerImage, { borderRadius: 5 }]}
-          onPress={e => this.activatePicker.bind(this)(e)}
+          onPress={() => onBodyPartClick(bodyPartCode)}
         />
-        <Picker
-          style={styles.picker}
-          selectedValue={this.state.selectedColor}
-          onValueChange={itemValue => this.onSelectionChange(itemValue)}
-        >
-          {colorValues.map(v => {
-            return <Picker.Item key={v} label={v} value={v} />;
-          })}
-        </Picker>
       </View>
     );
   }

@@ -53,7 +53,7 @@ const TabNav = TabNavigator(
     tabBarOptions: {
       showIcon: true,
       style: {
-        backgroundColor: Colors.bloodOrange
+        backgroundColor: Colors.facebook
       }
     },
     tabBarPosition: "bottom",
