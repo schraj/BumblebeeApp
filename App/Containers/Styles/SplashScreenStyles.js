@@ -11,6 +11,7 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   ...Fonts.style,
   container: {
+    paddingTop: 100,
     paddingBottom: Metrics.baseMargin
   },
   centered: {

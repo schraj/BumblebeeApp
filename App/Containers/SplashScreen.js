@@ -36,7 +36,7 @@ class SplashScreen extends Component {
               Welcome to the field guide. Just choose the body part colors of
               the Bumblebee and we will give you a list of possible species.
             </Text>
-            <CheckBox
+            {/* <CheckBox
               containerStyle={styles.disableSplashCheckbox}
               center
               title="Don't show this page again"
@@ -46,7 +46,7 @@ class SplashScreen extends Component {
             <Button
               onPress={this.onButtonClick.bind(this)}
               title="Go To Identification Page"
-            />
+            /> */}
           </View>
         </ScrollView>
       </View>
