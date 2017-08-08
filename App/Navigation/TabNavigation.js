@@ -1,7 +1,7 @@
 import { TabNavigator } from "react-navigation";
 import FilterScreen from "../Containers/FilterScreen";
 import SplashScreen from "../Containers/SplashScreen";
-import PicturesScreen from "../Containers/SplashScreen";
+import PicturesScreen from "../Containers/PicturesScreen";
 import ReportScreen from "../Containers/ReportScreen";
 
 import styles from "./Styles/NavigationStyles";

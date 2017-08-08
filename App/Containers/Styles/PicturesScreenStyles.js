@@ -18,11 +18,17 @@ export default StyleSheet.create({
   },
   title: {
     color: Colors.silver,
-    marginTop: 30
+    marginTop: 30,
+    marginBottom: 30
   },
   subTitle: {
     color: Colors.silver,
     marginTop: Metrics.baseMargin
+  },
+  beeImageCaption: {
+    color: Colors.silver,
+    marginTop: 30,
+    marginBottom: 10
   },
   scrollingBeeImage: {
     width: 300,

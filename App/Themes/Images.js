@@ -1,7 +1,7 @@
 // leave off @2x/@3x
 const images = {
   bumblebeeWhole: require("../Images/bumblebee_Whole.png"),
-  bumblebeePicture: require("../Images/HuntsBB-9084.jpg"),
+  bumblebeePicture: require("../Images/HuntsBB-9084_200.jpg"),
   tileBg: require("../Images/tile_bg.png"),
   background: require("../Images/BG.png"),
   buttonBackground: require("../Images/button-bg.png"),

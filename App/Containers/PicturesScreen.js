@@ -5,7 +5,7 @@ import { CheckBox } from "react-native-elements";
 import { Images } from "../Themes";
 
 // Styles
-import styles from "./Styles/SplashScreenStyles";
+import styles from "./Styles/PicturesScreenStyles";
 
 class PicturesScreen extends Component {
   constructor(props) {
@@ -27,15 +27,21 @@ class PicturesScreen extends Component {
         <View style={styles.centered}>
           <Text style={[styles.h1, styles.title]}>Species By Category</Text>
         </View>
-        <ScrollView style={styles.container}>
+        <ScrollView
+          style={styles.container}
+          centerContent={true}
+          contentContainerStyle={styles.centered}
+        >
           {this.arr.map(i => {
             return (
-              <Image
-                key={i}
-                source={Images.bumblebeePicture}
-                style={Images.scrollingBeeImage}
-                resizeMode="stretch"
-              />
+              <View key={i}>
+                <Text style={[styles.beeImageCaption]}>Hunt's BB</Text>
+                <Image
+                  source={Images.bumblebeePicture}
+                  style={styles.scrollingBeeImage}
+                  resizeMode="stretch"
+                />
+              </View>
             );
           })}
         </ScrollView>
