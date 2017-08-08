@@ -1,4 +1,4 @@
-const category = [
+export const beeCategory = [
   "Red Somewhere On Abdomen",
   "Striped, No Red",
   "White",
@@ -201,7 +201,7 @@ const brownBelted = {
   ]
 };
 
-const beeArray = [
+export const beeArray = [
   blackTail,
   central,
   hunts,
