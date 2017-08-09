@@ -1,9 +1,4 @@
-export const beeCategory = [
-  "Red Somewhere On Abdomen",
-  "Striped, No Red",
-  "White",
-  "Black Butt, No Red"
-];
+export const beeCategory = ["Red On Abdomen", "Striped, No Red", "White", "Black Butt, No Red"];
 const blackTail = {
   name: "Black tail BB",
   category: 0,

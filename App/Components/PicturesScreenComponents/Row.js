@@ -1,17 +1,35 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { Images } from "../../Themes";
+import { Images, Colors, Fonts } from "../../Themes";
+
+const Row = props =>
+  <View style={styles.container}>
+    <Image source={Images.bumblebeePicture} style={styles.photo} />
+    <View>
+      <Text style={styles.titleText}>
+        {`${props.name}`}
+      </Text>
+      {props.bodySize &&
+        <Text style={styles.subText}>
+          Body Size: {props.bodySize}
+        </Text>}
+    </View>
+  </View>;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 12,
+    padding: 20,
     flexDirection: "row",
     alignItems: "center"
   },
-  text: {
-    marginLeft: 12,
-    fontSize: 16
+  titleText: {
+    marginLeft: 20,
+    fontSize: Fonts.size.h4
+  },
+  subText: {
+    marginLeft: 20,
+    fontSize: Fonts.size.h6
   },
   photo: {
     height: 100,
@@ -19,13 +37,5 @@ const styles = StyleSheet.create({
     borderRadius: 50
   }
 });
-
-const Row = props =>
-  <View style={styles.container}>
-    <Image source={Images.bumblebeePicture} />
-    <Text style={styles.text}>
-      {`${props.name}`} {props.size ? `Size: ${props.size}` : ""}}
-    </Text>
-  </View>;
 
 export default Row;
