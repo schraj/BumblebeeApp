@@ -1,11 +1,5 @@
 import { StyleSheet } from "react-native";
-import {
-  Metrics,
-  ApplicationStyles,
-  Fonts,
-  Colors,
-  Images
-} from "../../Themes/";
+import { Metrics, ApplicationStyles, Fonts, Colors, Images } from "../../Themes/";
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -33,5 +27,10 @@ export default StyleSheet.create({
   scrollingBeeImage: {
     width: 300,
     height: 200
+  },
+  separator: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "#8E8E8E"
   }
 });

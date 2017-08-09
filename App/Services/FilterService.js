@@ -6,61 +6,28 @@ export const beeCategory = [
 ];
 const blackTail = {
   name: "Black tail BB",
-  category: 1,
+  category: 0,
   bodySize: null,
-  bodyParts: [
-    null,
-    "Cloudy",
-    "Dark",
-    "Yellow",
-    "Yellow",
-    "Red",
-    "Red",
-    "Cloudy",
-    null,
-    null
-  ]
+  bodyParts: [null, "Cloudy", "Dark", "Yellow", "Yellow", "Red", "Red", "Cloudy", null, null]
 };
 
 const central = {
   name: "Central BB",
-  category: 1,
+  category: 0,
   bodySize: null,
-  bodyParts: [
-    null,
-    null,
-    "Dark Band",
-    null,
-    "Yellow",
-    "Yellow",
-    "Red",
-    "Red",
-    null,
-    null
-  ]
+  bodyParts: [null, null, "Dark Band", null, "Yellow", "Yellow", "Red", "Red", null, null]
 };
 
 const hunts = {
   name: "Hunts BB",
-  category: 1,
+  category: 0,
   bodySize: null,
-  bodyParts: [
-    null,
-    null,
-    null,
-    null,
-    "Yellow",
-    "Red",
-    "Red",
-    "Yellow",
-    null,
-    null
-  ]
+  bodyParts: [null, null, null, null, "Yellow", "Red", "Red", "Yellow", null, null]
 };
 
 const fuzzyHorned = {
   name: "Fuzzy Horned BB",
-  category: 1,
+  category: 0,
   bodySize: null,
   bodyParts: [
     null,
@@ -78,25 +45,14 @@ const fuzzyHorned = {
 
 const twoForm = {
   name: "Two Form BB",
-  category: 2,
+  category: 1,
   bodySize: "Smaller",
-  bodyParts: [
-    null,
-    "Cloudy",
-    null,
-    "Triangle",
-    "Yellow",
-    "Black",
-    "Black",
-    "Yellow",
-    null,
-    null
-  ]
+  bodyParts: [null, "Cloudy", null, "Triangle", "Yellow", "Black", "Black", "Yellow", null, null]
 };
 
 const yellowFaced = {
   name: "Yellow Faced BB",
-  category: 2,
+  category: 1,
   bodySize: null,
   bodyParts: [
     "Yellow",
@@ -114,7 +70,7 @@ const yellowFaced = {
 
 const western = {
   name: "Western BB",
-  category: 1,
+  category: 0,
   bodySize: null,
   bodyParts: [
     "Black",
@@ -132,7 +88,7 @@ const western = {
 
 const whiteShouldered = {
   name: "BB",
-  category: 3,
+  category: 2,
   bodySize: "Large",
   bodyParts: [
     "White",
@@ -150,24 +106,14 @@ const whiteShouldered = {
 
 const yellowHead = {
   name: "Yellow Head BB",
-  category: 4,
+  category: 3,
   bodySize: null,
-  bodyParts: [
-    null,
-    "Black",
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Black",
-    "Black",
-    "Black",
-    "Black"
-  ]
+  bodyParts: [null, "Black", "Yellow", "Yellow", "Yellow", "Black", "Black", "Black", "Black"]
 };
 
 const nevada = {
   name: "Nevada BB",
-  category: 4,
+  category: 3,
   bodySize: null,
   bodyParts: [
     "Black",
@@ -185,20 +131,9 @@ const nevada = {
 
 const brownBelted = {
   name: "Brown Belted BB",
-  category: 4,
+  category: 3,
   bodySize: "Large",
-  bodyParts: [
-    null,
-    null,
-    "Black Dot",
-    null,
-    null,
-    "Brown",
-    "Black",
-    "Black",
-    "Black",
-    "Black"
-  ]
+  bodyParts: [null, null, "Black Dot", null, null, "Brown", "Black", "Black", "Black", "Black"]
 };
 
 export const beeArray = [
@@ -215,18 +150,7 @@ export const beeArray = [
   brownBelted
 ];
 
-const bodyPartNamesArray = [
-  "Face",
-  "FT",
-  "CT",
-  "RT",
-  "T1",
-  "T2",
-  "T3",
-  "T4",
-  "T5",
-  "T6"
-];
+const bodyPartNamesArray = ["Face", "FT", "CT", "RT", "T1", "T2", "T3", "T4", "T5", "T6"];
 
 export const getBodyPartIndex = bodyPartCode => {
   return bodyPartNamesArray.findIndex(i => i === bodyPartCode);
@@ -267,4 +191,63 @@ export const filter = attributeArray => {
     }
   });
   return filtedArray;
+};
+
+export const getFormattedBeeArray = () => {
+  let arr = [...beeArray];
+  arr.sort(beeCompare);
+  arr.forEach(b => {
+    b.categoryText = beeCategory[b.category];
+  });
+
+  const dataBlob = {};
+  const sectionIds = [];
+  const rowIds = [];
+
+  for (let sectionId = 0; sectionId < beeCategory.length; sectionId++) {
+    const bees = arr.filter(b => b.category === sectionId);
+
+    if (bees.length > 0) {
+      // Add a section id to our array so the listview knows that we've got a new section
+      sectionIds.push(sectionId);
+
+      // Store any data we would want to display in the section header. In our case we want to show
+      // the current character
+      dataBlob[sectionId] = { categoryText: beeCategory[sectionId] };
+
+      // Setup a new array that we can store the row ids for this section
+      rowIds.push([]);
+
+      // Loop over the valid bees for this section
+      for (let i = 0; i < bees.length; i++) {
+        // Create a unique row id for the data blob that the listview can use for reference
+        const rowId = `${sectionId}:${i}`;
+
+        // Push the row id to the row ids array. This is what listview will reference to pull
+        // data from our data blob
+        rowIds[rowIds.length - 1].push(rowId);
+
+        // Store the data we care about for this row
+        dataBlob[rowId] = bees[i];
+      }
+    }
+  }
+
+  return { dataBlob, sectionIds, rowIds };
+};
+
+const beeCompare = (a, b) => {
+  if (a.category < b.category) {
+    return -1;
+  } else if (a.category > b.category) {
+    return 1;
+  } else {
+    const aName = a.name.toLowerCase();
+    const bName = b.name.toLowerCase();
+    if (aName < bName) {
+      return -1;
+    } else if (aName > bName) {
+      return 1;
+    } else return 0;
+  }
 };
