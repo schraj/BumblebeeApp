@@ -1,40 +1,31 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { ListItem, Avatar } from "react-native-elements";
+
 import { Images, Colors, Fonts } from "../../Themes";
 
 const Row = props =>
-  <View style={styles.container}>
-    <Image source={Images.bumblebeePicture} style={styles.photo} />
-    <View>
-      <Text style={styles.titleText}>
-        {`${props.name}`}
-      </Text>
-      {props.bodySize &&
-        <Text style={styles.subText}>
-          Body Size: {props.bodySize}
-        </Text>}
-    </View>
-  </View>;
+  <ListItem
+    avatar={<Avatar large rounded source={Images.bumblebeePicture} />}
+    key={props.id}
+    title={props.name}
+    subtitle={props.bodySize}
+    titleStyle={styles.titleStyle}
+    titleContainerStyle={styles.titleContainerStyle}
+    containerStyle={{ paddingLeft: 30 }}
+    onPress={() => {
+      props.selectBeeSpecie(props.id);
+    }}
+  />;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    flexDirection: "row",
-    alignItems: "center"
+styles = StyleSheet.create({
+  titleContainerStyle: {
+    paddingTop: 20,
+    paddingBottom: 20
   },
-  titleText: {
-    marginLeft: 20,
-    fontSize: Fonts.size.h4
-  },
-  subText: {
-    marginLeft: 20,
-    fontSize: Fonts.size.h6
-  },
-  photo: {
-    height: 100,
-    width: 100,
-    borderRadius: 50
+  titleStyle: {
+    fontSize: Fonts.size.h4,
+    paddingLeft: 70
   }
 });
 

@@ -22,6 +22,7 @@ const TabNav = TabNavigator(
     },
     TabItem2: {
       screen: FilterScreen,
+      path: "FilterScreen/:id",
       navigationOptions: {
         tabBarLabel: "Identify",
         tabBarIcon: ({ tintColor }) =>
@@ -41,11 +42,7 @@ const TabNav = TabNavigator(
       navigationOptions: {
         tabBarLabel: "Report",
         tabBarIcon: ({ tintColor }) =>
-          <FontAwesome
-            name={"paper-plane"}
-            size={26}
-            style={{ color: tintColor }}
-          />
+          <FontAwesome name={"paper-plane"} size={26} style={{ color: tintColor }} />
       }
     }
   },

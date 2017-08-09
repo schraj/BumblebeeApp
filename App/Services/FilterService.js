@@ -1,5 +1,6 @@
 export const beeCategory = ["Red On Abdomen", "Striped, No Red", "White", "Black Butt, No Red"];
 const blackTail = {
+  id: 0,
   name: "Black tail BB",
   category: 0,
   bodySize: null,
@@ -7,6 +8,7 @@ const blackTail = {
 };
 
 const central = {
+  id: 1,
   name: "Central BB",
   category: 0,
   bodySize: null,
@@ -14,6 +16,7 @@ const central = {
 };
 
 const hunts = {
+  id: 2,
   name: "Hunts BB",
   category: 0,
   bodySize: null,
@@ -21,6 +24,7 @@ const hunts = {
 };
 
 const fuzzyHorned = {
+  id: 3,
   name: "Fuzzy Horned BB",
   category: 0,
   bodySize: null,
@@ -39,6 +43,7 @@ const fuzzyHorned = {
 };
 
 const twoForm = {
+  id: 4,
   name: "Two Form BB",
   category: 1,
   bodySize: "Smaller",
@@ -46,6 +51,7 @@ const twoForm = {
 };
 
 const yellowFaced = {
+  id: 5,
   name: "Yellow Faced BB",
   category: 1,
   bodySize: null,
@@ -64,6 +70,7 @@ const yellowFaced = {
 };
 
 const western = {
+  id: 6,
   name: "Western BB",
   category: 0,
   bodySize: null,
@@ -82,6 +89,7 @@ const western = {
 };
 
 const whiteShouldered = {
+  id: 7,
   name: "BB",
   category: 2,
   bodySize: "Large",
@@ -100,6 +108,7 @@ const whiteShouldered = {
 };
 
 const yellowHead = {
+  id: 8,
   name: "Yellow Head BB",
   category: 3,
   bodySize: null,
@@ -107,6 +116,7 @@ const yellowHead = {
 };
 
 const nevada = {
+  id: 9,
   name: "Nevada BB",
   category: 3,
   bodySize: null,
@@ -125,6 +135,7 @@ const nevada = {
 };
 
 const brownBelted = {
+  id: 10,
   name: "Brown Belted BB",
   category: 3,
   bodySize: "Large",

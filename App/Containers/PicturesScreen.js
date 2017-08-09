@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ScrollView, Text, Image, View, Button, ListView } from "react-native";
+import { List } from "react-native-elements";
 import { connect } from "react-redux";
 import { Images } from "../Themes";
 import Row from "../Components/PicturesScreenComponents/Row";
@@ -31,17 +32,25 @@ class PicturesScreen extends Component {
     };
   }
 
+  selectBeeSpecie(id) {
+    console.tron.log({ message: "in nav", id: id });
+
+    this.props.navigation.navigate("FilterScreen", { id: id });
+  }
+
   render() {
     return (
       <View style={styles.mainContainer}>
-        <ListView
-          style={styles.container}
-          dataSource={this.state.dataSource}
-          renderRow={data => <Row {...data} />}
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-          renderHeader={() => <Header />}
-          renderSectionHeader={sectionData => <SectionHeader {...sectionData} />}
-        />
+        <List>
+          <ListView
+            style={styles.container}
+            dataSource={this.state.dataSource}
+            renderRow={data => <Row {...data} selectBeeSpecie={this.selectBeeSpecie.bind(this)} />}
+            renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+            renderHeader={() => <Header />}
+            renderSectionHeader={sectionData => <SectionHeader {...sectionData} />}
+          />
+        </List>
       </View>
     );
   }
