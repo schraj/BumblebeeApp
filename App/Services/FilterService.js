@@ -90,7 +90,7 @@ const western = {
 
 const whiteShouldered = {
   id: 7,
-  name: "BB",
+  name: "White Shouldered BB",
   category: 2,
   bodySize: "Large",
   bodyParts: [

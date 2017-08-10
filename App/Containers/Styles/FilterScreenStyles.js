@@ -1,11 +1,5 @@
 import { StyleSheet } from "react-native";
-import {
-  Metrics,
-  ApplicationStyles,
-  Fonts,
-  Colors,
-  Images
-} from "../../Themes/";
+import { Metrics, ApplicationStyles, Fonts, Colors, Images } from "../../Themes/";
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -14,7 +8,7 @@ export default StyleSheet.create({
     paddingBottom: 0
   },
   bumblebeeImage: {
-    marginTop: Metrics.doubleSection,
+    marginTop: 10,
     height: 400,
     width: 400,
     resizeMode: "stretch"
@@ -24,7 +18,7 @@ export default StyleSheet.create({
   },
   title: {
     color: Colors.coal,
-    marginTop: 30
+    marginTop: 10
   },
   subTitle: {
     color: Colors.coal,
@@ -40,7 +34,8 @@ export default StyleSheet.create({
   },
   filteredItemText: {
     color: Colors.coal,
-    paddingVertical: Metrics.smallMargin
+    paddingVertical: Metrics.smallMargin,
+    fontSize: 16
   },
   sectionColorPicker: {
     display: "none"

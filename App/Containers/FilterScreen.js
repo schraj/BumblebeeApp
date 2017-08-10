@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  ScrollView,
-  Text,
-  Image,
-  View,
-  TouchableHighlight,
-  Alert,
-  Modal
-} from "react-native";
+import { ScrollView, Text, Image, View, TouchableHighlight, Alert, Modal } from "react-native";
 import { Button, List, ListItem } from "react-native-elements";
 import { Images, Colors } from "../Themes";
 import SectionColorPicker from "../Components/SectionColorPicker";
 import {
   filter,
+  beeArray,
   getBodyPartIndex,
   getColorsForBodyPart
 } from "../Services/FilterService";
@@ -24,27 +17,45 @@ export default class FilterScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getInitialState();
+
+    this.setAttributeArrayToSpecificBee = this.setAttributeArrayToSpecificBee.bind(this);
+  }
+
+  componentDidMount() {
+    console.tron.log({ message: "in did mount", props: this.props });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.tron.log({ message: "in receive props", nextProps: nextProps });
+    const beeId = nextProps.navigation.state.params.id;
+    this.setAttributeArrayToSpecificBee(beeId);
   }
 
   getInitialState() {
     return {
       modalVisible: false,
-      attributeArray: [
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC"
-      ],
+      attributeArray: ["NC", "NC", "NC", "NC", "NC", "NC", "NC", "NC", "NC", "NC"],
       filteredBeeArray: [],
       possibleColors: ["NC"],
       selectedColor: "NC"
     };
+  }
+
+  setAttributeArrayToSpecificBee(beeId) {
+    const bee = beeArray[beeId];
+    attributeArray = bee.bodyParts.map(i => {
+      if (i === null) {
+        return "NC";
+      } else {
+        return i;
+      }
+    });
+    filteredBeeArray = filter(attributeArray);
+
+    this.setState({
+      attributeArray,
+      filteredBeeArray
+    });
   }
 
   onBodyPartClick(bodyPartCode) {
@@ -181,9 +192,7 @@ export default class FilterScreen extends React.Component {
           </TouchableHighlight>
           <View style={styles.filterResults}>
             {this.state.attributeArray.every(i => i === "NC") &&
-              <Text style={styles.subTitle}>
-                Click on a section above to add a color.
-              </Text>}
+              <Text style={styles.subTitle}>Click on a section above to add a color.</Text>}
 
             {(this.state.filteredBeeArray.length > 0 ||
               !this.state.attributeArray.every(i => i === "NC")) &&

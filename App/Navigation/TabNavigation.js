@@ -22,7 +22,7 @@ const TabNav = TabNavigator(
     },
     TabItem2: {
       screen: FilterScreen,
-      path: "FilterScreen/:id",
+      path: "TabItem2/:id",
       navigationOptions: {
         tabBarLabel: "Identify",
         tabBarIcon: ({ tintColor }) =>

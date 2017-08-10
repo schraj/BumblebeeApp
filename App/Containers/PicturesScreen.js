@@ -33,9 +33,7 @@ class PicturesScreen extends Component {
   }
 
   selectBeeSpecie(id) {
-    console.tron.log({ message: "in nav", id: id });
-
-    this.props.navigation.navigate("FilterScreen", { id: id });
+    this.props.navigation.navigate("TabItem2", { id: id });
   }
 
   render() {
