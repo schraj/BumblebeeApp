@@ -1,8 +1,11 @@
 import React from "react";
-import { ScrollView, Text, Image, View, TouchableHighlight, Alert, Modal } from "react-native";
+import { ScrollView, Text, Image, View, TouchableHighlight } from "react-native";
 import { Button, List, ListItem } from "react-native-elements";
 import { Images, Colors } from "../Themes";
-import SectionColorPicker from "../Components/SectionColorPicker";
+import ColorPickerPopup from "../Components/FilterScreenComponents/ColorPickerPopup";
+import BodyPartPicker from "../Components/FilterScreenComponents/BodyPartPicker";
+import FilterResultsList from "../Components/FilterScreenComponents/FilterResultsList";
+
 import {
   filter,
   beeArray,
@@ -10,7 +13,6 @@ import {
   getColorsForBodyPart
 } from "../Services/FilterService";
 
-// Styles
 import styles from "./Styles/FilterScreenStyles";
 
 export default class FilterScreen extends React.Component {
@@ -18,17 +20,21 @@ export default class FilterScreen extends React.Component {
     super(props);
     this.state = this.getInitialState();
 
-    this.setAttributeArrayToSpecificBee = this.setAttributeArrayToSpecificBee.bind(this);
-  }
+    console.tron.log({ message: "in ctor", initalstate: this.state });
 
-  componentDidMount() {
-    console.tron.log({ message: "in did mount", props: this.props });
+    this.setAttributeArrayToSpecificBee = this.setAttributeArrayToSpecificBee.bind(this);
+    this.onColorSelection = this.onColorSelection.bind(this);
+    this.onBodyPartClick = this.onBodyPartClick.bind(this);
+    this.selectBeeFromResults = this.selectBeeFromResults.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    console.tron.log({ message: "in receive props", nextProps: nextProps });
+    console.tron.log({ message: "in receive", nextProps: nextProps });
+
     const beeId = nextProps.navigation.state.params.id;
-    this.setAttributeArrayToSpecificBee(beeId);
+    if (beeId) {
+      this.setAttributeArrayToSpecificBee(beeId);
+    }
   }
 
   getInitialState() {
@@ -39,6 +45,10 @@ export default class FilterScreen extends React.Component {
       possibleColors: ["NC"],
       selectedColor: "NC"
     };
+  }
+
+  selectBeeFromResults(id) {
+    this.props.navigation.navigate("TabItem3", { id: id });
   }
 
   setAttributeArrayToSpecificBee(beeId) {
@@ -88,108 +98,19 @@ export default class FilterScreen extends React.Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Modal
-          animationType={"slide"}
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {}}
-        >
-          <View style={{ marginTop: 22 }}>
-            <View>
-              <List containerStyle={{ marginBottom: 20 }}>
-                {this.state.possibleColors.map(i =>
-                  <ListItem
-                    key={i}
-                    title={i}
-                    onPress={e => {
-                      this.onColorSelection(i);
-                    }}
-                  />
-                )}
-              </List>
-            </View>
-          </View>
-        </Modal>
         <ScrollView style={styles.container}>
+          <ColorPickerPopup
+            visible={this.state.modalVisible}
+            colors={this.state.possibleColors}
+            onSelectColor={this.onColorSelection}
+          />
           <View style={styles.centered}>
             <Text style={[styles.h1, styles.title]}>Identify Your Bee</Text>
           </View>
-          <TouchableHighlight>
-            <Image source={Images.bumblebeeWhole} style={styles.bumblebeeImage}>
-              <View style={[styles.centered, styles.bodyPartControlTree]}>
-                <SectionColorPicker
-                  bodyPart="Face"
-                  bodyPartCode="Face"
-                  bodyPartColor={this.state.attributeArray[0]}
-                  controlHeight={50}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="Front of Thorax"
-                  bodyPartCode="FT"
-                  bodyPartColor={this.state.attributeArray[1]}
-                  controlHeight={40}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="Central Thorax"
-                  bodyPartCode="CT"
-                  bodyPartColor={this.state.attributeArray[2]}
-                  controlHeight={50}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="Rear Thorax"
-                  bodyPartCode="RT"
-                  bodyPartColor={this.state.attributeArray[3]}
-                  controlHeight={30}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="T1"
-                  bodyPartCode="T1"
-                  bodyPartColor={this.state.attributeArray[4]}
-                  controlHeight={40}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="T2"
-                  bodyPartCode="T2"
-                  bodyPartColor={this.state.attributeArray[5]}
-                  controlHeight={50}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="T3"
-                  bodyPartCode="T3"
-                  bodyPartColor={this.state.attributeArray[6]}
-                  controlHeight={38}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="T4"
-                  bodyPartCode="T4"
-                  bodyPartColor={this.state.attributeArray[7]}
-                  controlHeight={30}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="T5"
-                  bodyPartCode="T5"
-                  bodyPartColor={this.state.attributeArray[8]}
-                  controlHeight={28}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-                <SectionColorPicker
-                  bodyPart="T6"
-                  bodyPartCode="T6"
-                  bodyPartColor={this.state.attributeArray[9]}
-                  controlHeight={30}
-                  onBodyPartClick={this.onBodyPartClick.bind(this)}
-                />
-              </View>
-            </Image>
-          </TouchableHighlight>
+          <BodyPartPicker
+            attributeArray={this.state.attributeArray}
+            onBodyPartSelect={this.onBodyPartClick}
+          />
           <View style={styles.filterResults}>
             {this.state.attributeArray.every(i => i === "NC") &&
               <Text style={styles.subTitle}>Click on a section above to add a color.</Text>}
@@ -212,13 +133,10 @@ export default class FilterScreen extends React.Component {
               </View>}
 
             {this.state.filteredBeeArray.length > 0 &&
-              this.state.filteredBeeArray.map(b => {
-                return (
-                  <Text key={b.name} style={styles.filteredItemText}>
-                    {b.name}
-                  </Text>
-                );
-              })}
+              <FilterResultsList
+                resultsList={filteredBeeArray}
+                selectBeeFromResults={this.selectBeeFromResults}
+              />}
           </View>
         </ScrollView>
       </View>

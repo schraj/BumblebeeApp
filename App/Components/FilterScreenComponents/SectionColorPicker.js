@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { View, Text, Picker } from "react-native";
 import { Button } from "react-native-elements";
-import { Colors } from "../Themes";
+import { Colors } from "../../Themes";
 
 import styles from "./Styles/SectionColorPickerStyles";
 
@@ -20,13 +20,7 @@ export default class SectionColorPicker extends React.Component {
   };
 
   render() {
-    const {
-      bodyPart,
-      bodyPartCode,
-      bodyPartColor,
-      controlHeight,
-      onBodyPartClick
-    } = this.props;
+    const { bodyPart, bodyPartCode, bodyPartColor, controlHeight, onBodyPartClick } = this.props;
 
     let buttonColor = "transparent";
     if (bodyPartColor !== "NC") {
@@ -36,13 +30,7 @@ export default class SectionColorPicker extends React.Component {
       }
     }
     return (
-      <View
-        style={[
-          styles.centered,
-          styles.bodyPartControl,
-          { height: controlHeight }
-        ]}
-      >
+      <View style={[styles.centered, styles.bodyPartControl, { height: controlHeight }]}>
         <Button
           title={bodyPart}
           buttonStyle={styles.pickerImage}

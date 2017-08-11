@@ -7,12 +7,6 @@ export default StyleSheet.create({
   container: {
     paddingBottom: 0
   },
-  bumblebeeImage: {
-    marginTop: 10,
-    height: 400,
-    width: 400,
-    resizeMode: "stretch"
-  },
   centered: {
     alignItems: "center"
   },
@@ -23,11 +17,6 @@ export default StyleSheet.create({
   subTitle: {
     color: Colors.coal,
     marginTop: Metrics.baseMargin
-  },
-  bodyPartControlTree: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start"
   },
   filterResults: {
     alignItems: "center"

@@ -31,6 +31,7 @@ const TabNav = TabNavigator(
     },
     TabItem3: {
       screen: PicturesScreen,
+      path: "TabItem3/:id",
       navigationOptions: {
         tabBarLabel: "List",
         tabBarIcon: ({ tintColor }) =>
