@@ -105,7 +105,7 @@ export default class FilterScreen extends React.Component {
             onSelectColor={this.onColorSelection}
           />
           <View style={styles.centered}>
-            <Text style={[styles.h1, styles.title]}>Identify Your Bee</Text>
+            <Text style={styles.title}>Identify</Text>
           </View>
           <BodyPartPicker
             attributeArray={this.state.attributeArray}

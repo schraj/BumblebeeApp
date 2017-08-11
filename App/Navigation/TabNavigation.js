@@ -1,5 +1,5 @@
 import React from "react";
-import { TabNavigator } from "react-navigation";
+import { TabNavigator, NavigationActions } from "react-navigation";
 import FilterScreen from "../Containers/FilterScreen";
 import SplashScreen from "../Containers/SplashScreen";
 import PicturesScreen from "../Containers/PicturesScreen";

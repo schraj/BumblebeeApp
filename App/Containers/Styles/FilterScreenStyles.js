@@ -4,13 +4,11 @@ import { Metrics, ApplicationStyles, Fonts, Colors, Images } from "../../Themes/
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   ...Fonts.style,
-  container: {
-    paddingBottom: 0
-  },
   centered: {
     alignItems: "center"
   },
   title: {
+    fontSize: Fonts.size.h2,
     color: Colors.coal,
     marginTop: 10
   },
