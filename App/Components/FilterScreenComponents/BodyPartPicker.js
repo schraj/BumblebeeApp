@@ -48,14 +48,14 @@ export default class BodyPartPicker extends React.Component {
               bodyPart="Rear Thorax"
               bodyPartCode="RT"
               bodyPartColor={attributeArray[3]}
-              controlHeight={30}
+              controlHeight={40}
               onBodyPartClick={onBodyPartSelect}
             />
             <SectionColorPicker
               bodyPart="T1"
               bodyPartCode="T1"
               bodyPartColor={attributeArray[4]}
-              controlHeight={40}
+              controlHeight={45}
               onBodyPartClick={onBodyPartSelect}
             />
             <SectionColorPicker
@@ -83,7 +83,7 @@ export default class BodyPartPicker extends React.Component {
               bodyPart="T5"
               bodyPartCode="T5"
               bodyPartColor={attributeArray[8]}
-              controlHeight={28}
+              controlHeight={30}
               onBodyPartClick={onBodyPartSelect}
             />
             <SectionColorPicker
