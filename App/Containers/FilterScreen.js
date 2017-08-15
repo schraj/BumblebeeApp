@@ -9,6 +9,7 @@ import {
   Dimensions
 } from "react-native";
 import { Button, List, ListItem } from "react-native-elements";
+import Orientation from "react-native-orientation";
 import { Images, Colors, Metrics, ApplicationStyles, Fonts } from "../Themes";
 import ColorPickerPopup from "../Components/FilterScreenComponents/ColorPickerPopup";
 import BodyPartPicker from "../Components/FilterScreenComponents/BodyPartPicker";
@@ -34,6 +35,10 @@ export default class FilterScreen extends React.Component {
     this.onColorSelection = this.onColorSelection.bind(this);
     this.onBodyPartClick = this.onBodyPartClick.bind(this);
     this.selectBeeFromResults = this.selectBeeFromResults.bind(this);
+  }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
   }
 
   componentWillReceiveProps(nextProps) {
