@@ -1,7 +1,7 @@
 import React from "react";
-import { ScrollView, Text, Image, View, TouchableHighlight } from "react-native";
+import { ScrollView, Text, Image, View, TouchableHighlight, StyleSheet } from "react-native";
 import { Button, List, ListItem } from "react-native-elements";
-import { Images, Colors } from "../Themes";
+import { Images, Colors, Metrics, ApplicationStyles, Fonts } from "../Themes";
 import ColorPickerPopup from "../Components/FilterScreenComponents/ColorPickerPopup";
 import BodyPartPicker from "../Components/FilterScreenComponents/BodyPartPicker";
 import FilterResultsList from "../Components/FilterScreenComponents/FilterResultsList";
@@ -12,8 +12,6 @@ import {
   getBodyPartIndex,
   getColorsForBodyPart
 } from "../Services/FilterService";
-
-import styles from "./Styles/FilterScreenStyles";
 
 export default class FilterScreen extends React.Component {
   constructor(props) {
@@ -143,3 +141,45 @@ export default class FilterScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  ...ApplicationStyles.screen,
+  centered: {
+    alignItems: "center"
+  },
+  title: {
+    fontSize: Fonts.size.h2,
+    color: Colors.coal,
+    marginTop: 10
+  },
+  subTitle: {
+    color: Colors.coal,
+    marginTop: Metrics.baseMargin
+  },
+  filterResults: {
+    alignItems: "center"
+  },
+  filteredItemText: {
+    color: Colors.coal,
+    paddingVertical: Metrics.smallMargin,
+    fontSize: 16
+  },
+  filterStatusBar: {
+    flex: 1,
+    flexDirection: "row"
+  },
+  filterStatusBarText: {
+    flex: 2,
+    fontSize: Fonts.size.h4,
+    paddingLeft: 30
+  },
+  resetButton: {
+    paddingTop: 10,
+    width: 100,
+    height: 30
+  },
+  resetButtonContainer: {
+    paddingRight: 10,
+    borderRadius: 3
+  }
+});

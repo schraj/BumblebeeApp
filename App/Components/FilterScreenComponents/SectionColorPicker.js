@@ -1,12 +1,12 @@
 import React, { PropTypes } from "react";
-import { View, Text, Picker, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import Svg, { Polygon } from "react-native-svg";
 import { Colors } from "../../Themes";
 
 const bodyPartPaths = {
-  Face: "51,10 106,10 106,40 51,40",
-  FT: "53,0 108,0 108,20 53,20",
+  Face: "121,10 176,10 176,40 121,40",
+  FT: "0,0 300,0 300,50 0,50",
   CT: "53,0 108,0 108,20 53,20",
   RT: "53,0 108,0 108,20 53,20",
   T1: "53,0 108,0 108,20 53,20",
@@ -70,26 +70,13 @@ const styles = StyleSheet.create({
   bodyPartControl: {
     flexDirection: "row",
     alignItems: "flex-start",
-    paddingTop: 0
-  },
-  bodyPartLabel: {
-    width: 150,
-    color: Colors.transparent,
-    fontWeight: "bold"
-  },
-  picker: {
-    width: 120,
-    color: Colors.transparent
+    justifyContent: "flex-start",
+    width: 300
   },
   buttonStyle: {
-    width: 130,
+    width: 300,
     height: 50,
-    borderColor: Colors.transparent,
-    paddingTop: 0,
-    paddingBottom: 0
+    borderColor: Colors.transparent
   },
-  buttonContainerStyle: {
-    paddingTop: 0,
-    paddingBottom: 0
-  }
+  buttonContainerStyle: {}
 });
