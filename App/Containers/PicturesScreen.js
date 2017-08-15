@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import { ScrollView, Text, Image, View, Button, ListView } from "react-native";
+import { ScrollView, Text, Image, View, Button, ListView, StyleSheet } from "react-native";
 import { List } from "react-native-elements";
 import { connect } from "react-redux";
-import { Images } from "../Themes";
+import { Metrics, ApplicationStyles, Fonts, Colors, Images } from "../Themes/";
 import Row from "../Components/PicturesScreenComponents/Row";
 import Header from "../Components/PicturesScreenComponents/Header";
 import SectionHeader from "../Components/PicturesScreenComponents/SectionHeader";
 
 import { getFormattedBeeArray } from "../Services/FilterService";
-
-// Styles
-import styles from "./Styles/PicturesScreenStyles";
 
 class PicturesScreen extends Component {
   constructor(props) {
@@ -53,5 +50,18 @@ class PicturesScreen extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  ...ApplicationStyles.screen,
+  ...Fonts.style,
+  container: {
+    paddingBottom: Metrics.baseMargin
+  },
+  separator: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "#8E8E8E"
+  }
+});
 
 export default PicturesScreen;

@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { ScrollView, Text, Image, View, Button } from "react-native";
+import { ScrollView, Text, Image, View, Button, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { Avatar } from "react-native-elements";
 
-import { Images } from "../Themes";
+import { ApplicationStyles, Fonts, Images, Colors } from "../Themes";
 import SettingsActions from "../Redux/SettingsRedux";
-
-// Styles
-import styles from "./Styles/SplashScreenStyles";
 
 class SplashScreen extends Component {
   constructor(props) {
@@ -34,6 +31,29 @@ class SplashScreen extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  ...ApplicationStyles.screen,
+  ...Fonts.style,
+  centered: {
+    alignItems: "center"
+  },
+  title: {
+    fontSize: Fonts.size.h2,
+    paddingTop: 80,
+    color: Colors.coal
+  },
+  splashDescription: {
+    ...Fonts.style.h5,
+    color: Colors.coal,
+    alignItems: "center",
+    marginTop: 60,
+    width: 260
+  },
+  beeAvatar: {
+    marginTop: 60
+  }
+});
 
 const mapStateToProps = state => {
   return {
