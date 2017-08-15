@@ -5,10 +5,10 @@ import Svg, { Polygon } from "react-native-svg";
 import { Colors } from "../../Themes";
 
 const bodyPartPaths = {
-  Face: "121,10 176,10 176,40 121,40",
-  FT: "0,0 300,0 300,50 0,50",
-  CT: "53,0 108,0 108,20 53,20",
-  RT: "53,0 108,0 108,20 53,20",
+  Face: "128,10 170,10 170,40 128,40",
+  FT: "77,25 149,0 220,25 220,50 77,50",
+  CT: "77,0 220,0 220,80 77,80",
+  RT: "77,10 220,10 220,19 149,42 77,19",
   T1: "53,0 108,0 108,20 53,20",
   T2: "53,0 108,0 108,20 53,20",
   T3: "53,0 108,0 108,20 53,20",
@@ -56,7 +56,7 @@ export default class SectionColorPicker extends React.Component {
         <Button
           title={bodyPart}
           buttonStyle={styles.buttonStyle}
-          containerStyle={styles.buttonContainerStyle}
+          containerViewStyle={styles.buttonContainerStyle}
           backgroundColor={Colors.transparent}
           color={Colors.coal}
           onPress={() => onBodyPartClick(bodyPartCode)}
@@ -71,12 +71,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "flex-start",
-    width: 300
+    width: 300,
+    paddingLeft: 0
   },
   buttonStyle: {
     width: 300,
     height: 50,
-    borderColor: Colors.transparent
+    borderColor: Colors.transparent,
+    paddingLeft: 0
   },
-  buttonContainerStyle: {}
+  buttonContainerStyle: {
+    paddingLeft: 0,
+    marginLeft: 4
+  }
 });

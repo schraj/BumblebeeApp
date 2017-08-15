@@ -1,7 +1,9 @@
 import React, { PropTypes } from "react";
-import { View, Text, TouchableHighlight, Image, StyleSheet } from "react-native";
+import { View, Text, TouchableHighlight, Image, StyleSheet, Dimensions } from "react-native";
 import SectionColorPicker from "./SectionColorPicker";
 import { Images, Colors } from "../../Themes";
+
+const { width } = Dimensions.get("window");
 
 export default class BodyPartPicker extends React.Component {
   constructor(props) {
@@ -18,28 +20,28 @@ export default class BodyPartPicker extends React.Component {
     const { attributeArray, onBodyPartSelect } = this.props;
 
     return (
-      <TouchableHighlight>
+      <TouchableHighlight style={{ paddingLeft: (width - 300) / 2 }}>
         <Image source={Images.bumblebeeWhole} style={styles.bumblebeeImage}>
           <View style={styles.bodyPartControlTree}>
             <SectionColorPicker
               bodyPart="Face"
               bodyPartCode="Face"
               bodyPartColor={attributeArray[0]}
-              controlHeight={50}
+              controlHeight={55}
               onBodyPartClick={onBodyPartSelect}
             />
             <SectionColorPicker
               bodyPart="Front of Thorax"
               bodyPartCode="FT"
               bodyPartColor={attributeArray[1]}
-              controlHeight={40}
+              controlHeight={53}
               onBodyPartClick={onBodyPartSelect}
             />
             <SectionColorPicker
               bodyPart="Central Thorax"
               bodyPartCode="CT"
               bodyPartColor={attributeArray[2]}
-              controlHeight={50}
+              controlHeight={47}
               onBodyPartClick={onBodyPartSelect}
             />
             <SectionColorPicker
@@ -103,12 +105,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "flex-start"
   },
   bumblebeeImage: {
     marginTop: 10,
-    height: 400,
-    width: 400,
+    height: 450,
+    width: 300,
     resizeMode: "stretch"
   }
 });

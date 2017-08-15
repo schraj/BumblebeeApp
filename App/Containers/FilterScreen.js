@@ -1,5 +1,13 @@
 import React from "react";
-import { ScrollView, Text, Image, View, TouchableHighlight, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  Text,
+  Image,
+  View,
+  TouchableHighlight,
+  StyleSheet,
+  Dimensions
+} from "react-native";
 import { Button, List, ListItem } from "react-native-elements";
 import { Images, Colors, Metrics, ApplicationStyles, Fonts } from "../Themes";
 import ColorPickerPopup from "../Components/FilterScreenComponents/ColorPickerPopup";
@@ -12,6 +20,8 @@ import {
   getBodyPartIndex,
   getColorsForBodyPart
 } from "../Services/FilterService";
+
+const { width } = Dimensions.get("window");
 
 export default class FilterScreen extends React.Component {
   constructor(props) {
@@ -96,7 +106,7 @@ export default class FilterScreen extends React.Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <ScrollView style={styles.container}>
+        <ScrollView style={{ width: width }}>
           <ColorPickerPopup
             visible={this.state.modalVisible}
             colors={this.state.possibleColors}
