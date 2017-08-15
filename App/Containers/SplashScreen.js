@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ScrollView, Text, Image, View, Button, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { Avatar } from "react-native-elements";
+import Orientation from "react-native-orientation";
 
 import { ApplicationStyles, Fonts, Images, Colors } from "../Themes";
 import SettingsActions from "../Redux/SettingsRedux";
@@ -9,6 +10,11 @@ import SettingsActions from "../Redux/SettingsRedux";
 class SplashScreen extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
+    // Orientation.unlockAllOrientations();
   }
 
   render() {

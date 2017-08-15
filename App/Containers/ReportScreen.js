@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import { ScrollView, Text, Image, View, Button, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { CheckBox } from "react-native-elements";
+import Orientation from "react-native-orientation";
 import { Images, Fonts, ApplicationStyles, Colors } from "../Themes";
 
 class ReportScreen extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
+    // Orientation.unlockAllOrientations();
   }
 
   render() {

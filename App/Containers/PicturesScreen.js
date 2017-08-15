@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ScrollView, Text, Image, View, Button, ListView, StyleSheet } from "react-native";
 import { List } from "react-native-elements";
 import { connect } from "react-redux";
+import Orientation from "react-native-orientation";
 import { Metrics, ApplicationStyles, Fonts, Colors, Images } from "../Themes/";
 import Row from "../Components/PicturesScreenComponents/Row";
 import Header from "../Components/PicturesScreenComponents/Header";
@@ -27,6 +28,11 @@ class PicturesScreen extends Component {
     this.state = {
       dataSource: ds.cloneWithRowsAndSections(dataBlob, sectionIds, rowIds)
     };
+  }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
+    // Orientation.unlockAllOrientations();
   }
 
   selectBeeSpecie(id) {

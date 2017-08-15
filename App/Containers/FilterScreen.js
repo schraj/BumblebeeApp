@@ -42,12 +42,15 @@ export default class FilterScreen extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.tron.log({ message: "in receive", nextProps: nextProps });
-
     const beeId = nextProps.navigation.state.params.id;
     if (beeId) {
       this.setAttributeArrayToSpecificBee(beeId);
     }
+  }
+
+  componentWillUnmount() {
+    console.tron.log({ message: "in unmount" });
+    //Orientation.unlockAllOrientations();
   }
 
   getInitialState() {
