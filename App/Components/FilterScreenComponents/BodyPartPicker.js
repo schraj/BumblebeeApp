@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { View, Text, TouchableHighlight, Image, StyleSheet } from "react-native";
 import SectionColorPicker from "./SectionColorPicker";
-import { Images } from "../../Themes";
+import { Images, Colors } from "../../Themes";
 
 export default class BodyPartPicker extends React.Component {
   constructor(props) {
