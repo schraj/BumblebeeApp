@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { ScrollView, Text, Image, View, Button } from "react-native";
+import { ScrollView, Text, Image, View, Button, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { CheckBox } from "react-native-elements";
-import { Images } from "../Themes";
-
-// Styles
-import styles from "./Styles/SplashScreenStyles";
+import { Images, Fonts, ApplicationStyles, Colors } from "../Themes";
 
 class ReportScreen extends Component {
   constructor(props) {
@@ -25,5 +22,18 @@ class ReportScreen extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  ...ApplicationStyles.screen,
+  ...Fonts.style,
+  centered: {
+    alignItems: "center"
+  },
+  title: {
+    fontSize: Fonts.size.h2,
+    paddingTop: 80,
+    color: Colors.coal
+  }
+});
 
 export default ReportScreen;

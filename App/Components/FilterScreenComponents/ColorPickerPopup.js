@@ -2,8 +2,6 @@ import React, { PropTypes } from "react";
 import { Modal, View } from "react-native";
 import { List, ListItem } from "react-native-elements";
 
-import styles from "./Styles/SectionColorPickerStyles";
-
 export default class SectionColorPicker extends React.Component {
   constructor(props) {
     super(props);

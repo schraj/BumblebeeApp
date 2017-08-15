@@ -5,11 +5,9 @@ import SplashScreen from "../Containers/SplashScreen";
 import PicturesScreen from "../Containers/PicturesScreen";
 import ReportScreen from "../Containers/ReportScreen";
 
-import styles from "./Styles/NavigationStyles";
 import Colors from "../Themes/Colors";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-// Manifest of possible screens
 const TabNav = TabNavigator(
   {
     TabItem1: {
